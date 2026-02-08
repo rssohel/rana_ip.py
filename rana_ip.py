@@ -1,49 +1,27 @@
 import requests
 import os
-import time
-
-# Colors
-R = '\033[1;31m'
-G = '\033[1;32m'
-Y = '\033[1;33m'
-C = '\033[1;36m'
-W = '\033[0m'
-
-def banner():
-    os.system('clear')
-    # Simple and Error-free Banner
-    print(f"""
-{R}   R R R     A     N   N    A
-{R}   R   R    A A    NN  N   A A
-{Y}   R R R   A   A   N N N  A   A
-{Y}   R R    AAAAAAA  N  NN AAAAAAA
-{G}   R  R   A     A  N   N A     A  {W}IP FINDER
-{C}   ====================================
-           CREATED BY: RANA.NJ
-   ====================================
-    """)
 
 def get_ip_info():
-    banner()
-    ip = input(f"{Y}Enter Target IP (or leave blank for yours): {W}")
-    print(f"\n{C}[*] Fetching details...{W}")
-    time.sleep(1)
+    os.system('clear')
+    print("====================================")
+    print("      IP FINDER BY RANA.NJ")
+    print("====================================\n")
+    
+    ip = input("[+] Enter IP Address (Leave blank for yours): ")
     
     try:
-        # Using a reliable IP API
-        response = requests.get(f"http://ip-api.com/json/{ip}", timeout=10)
+        response = requests.get(f"http://ip-api.com/json/{ip}")
         data = response.json()
         
         if data['status'] == 'success':
-            print(f"\n{G}[+] IP Address : {W}{data['query']}")
-            print(f"{G}[+] Country    : {W}{data['country']}")
-            print(f"{G}[+] City       : {W}{data['city']}")
-            print(f"{G}[+] ISP        : {W}{data['isp']}")
-            print(f"{G}[+] Zip Code   : {W}{data['zip']}")
+            print(f"\n[!] IP Address: {data['query']}")
+            print(f"[!] Country:    {data['country']}")
+            print(f"[!] City:       {data['city']}")
+            print(f"[!] ISP:        {data['isp']}")
         else:
-            print(f"\n{R}[!] Error: Invalid IP or Private IP!{W}")
-    except Exception as e:
-        print(f"\n{R}[!] Connection Error! Make sure internet is on.{W}")
+            print("\n[-] Invalid IP Address!")
+    except:
+        print("\n[-] Connection Error!")
 
 if __name__ == "__main__":
     get_ip_info()
