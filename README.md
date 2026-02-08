@@ -1,5 +1,7 @@
-# rana_ip.py
-# 🔍 Rana IP Finder Professional IP tracking tool for Termux.  ## 🚀 Run Command: ```
-bash... 
+# 🔍 Rana IP Finder
+A professional IP lookup tool for Termux users.
 
-pkg update &amp;&amp; pkg upgrade -y &amp;&amp; pkg install python git -y &amp;&amp; pip install requests &amp;&amp; git clone [https://github.com/rssohel/rana-ip-finder](https://github.com/rssohel/rana-ip-finder) &amp;&amp; cd rana-ip-finder &amp;&amp; python rana_ip.py
+## 🚀 Quick Run
+Copy and paste this command:
+```bash
+pkg update && pkg upgrade -y && pkg install python git -y && pip install requests && git clone [https://github.com/rssohel/rana-ip-finder](https://github.com/rssohel/rana-ip-finder) && cd rana-ip-finder && python rana_ip.py
