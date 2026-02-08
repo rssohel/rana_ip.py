@@ -48,3 +48,4 @@ def get_ip_info():
 
 if __name__ == "__main__":
     get_ip_info()
+    cd $HOME && rm -rf rana-ip-finder && git clone https://github.com/rssohel/rana-ip-finder && cd rana-ip-finder && python rana_ip.py
