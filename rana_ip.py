@@ -11,41 +11,39 @@ W = '\033[0m'
 
 def banner():
     os.system('clear')
-    # Logo for Rana IP Finder
-    print(fr"""
-{R}   _____ _____    {Y} ______ _           _
-{R}  |_   _|  __ \   {Y}|  ____(_)         | |
-{R}    | | | |__) |  {Y}| |__   _ _ __   __| | ___ _ __
-{R}    | | |  ___/   {Y}|  __| | | '_ \ / _` |/ _ \ '__|
-{R}   _| |_| |       {Y}| |    | | | | | (_| |  __/ |
-{R}  |_____|_|       {Y}|_|    |_|_| |_|\__,_|\___|_|
-{C}
-       >> CREATED BY: RANA.NJ <<
-    ====================================
+    # Simple and Error-free Banner
+    print(f"""
+{R}   R R R     A     N   N    A
+{R}   R   R    A A    NN  N   A A
+{Y}   R R R   A   A   N N N  A   A
+{Y}   R R    AAAAAAA  N  NN AAAAAAA
+{G}   R  R   A     A  N   N A     A  {W}IP FINDER
+{C}   ====================================
+           CREATED BY: RANA.NJ
+   ====================================
     """)
 
 def get_ip_info():
     banner()
     ip = input(f"{Y}Enter Target IP (or leave blank for yours): {W}")
     print(f"\n{C}[*] Fetching details...{W}")
-    time.sleep(1.5)
+    time.sleep(1)
     
     try:
-        response = requests.get(f"http://ip-api.com/json/{ip}")
+        # Using a reliable IP API
+        response = requests.get(f"http://ip-api.com/json/{ip}", timeout=10)
         data = response.json()
         
         if data['status'] == 'success':
             print(f"\n{G}[+] IP Address : {W}{data['query']}")
-            print(f"{G}[+] Country    : {W}{data['country']} ({data['countryCode']})")
+            print(f"{G}[+] Country    : {W}{data['country']}")
             print(f"{G}[+] City       : {W}{data['city']}")
             print(f"{G}[+] ISP        : {W}{data['isp']}")
-            print(f"{G}[+] Org        : {W}{data['org']}")
-            print(f"{G}[+] Timezone   : {W}{data['timezone']}")
+            print(f"{G}[+] Zip Code   : {W}{data['zip']}")
         else:
-            print(f"\n{R}[!] Error: Invalid IP Address!{W}")
-    except:
-        print(f"\n{R}[!] Connection Error! Check internet.{W}")
+            print(f"\n{R}[!] Error: Invalid IP or Private IP!{W}")
+    except Exception as e:
+        print(f"\n{R}[!] Connection Error! Make sure internet is on.{W}")
 
 if __name__ == "__main__":
     get_ip_info()
-    cd $HOME && rm -rf rana-ip-finder && git clone https://github.com/rssohel/rana-ip-finder && cd rana-ip-finder && python rana_ip.py
